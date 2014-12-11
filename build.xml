@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<project name="swf example" default="main" basedir=".">
+
+
+
+<property name="FLEX_HOME" value="/Applications/Adobe Flash Builder 4.7/sdks/4.6.0"/> 
+
+
+
+ <taskdef resource="flexTasks.tasks" classpath="libs/flexTasks.jar"/>
+
+
+   
+
+ <property name="DEPLOY.dir" value="${basedir}/bin"/>
+    <target name="main" depends="clean, compile"/>
+    <target name="clean">
+        <delete dir="${DEPLOY.dir}"/>
+        <mkdir dir="${DEPLOY.dir}"/>
+    </target>
+    <target name="compile">
+        <mxmlc file="${basedir}/src/HelloWorld.mxml" output="${DEPLOY.dir}/output.swf" failonerror="true" maxmemory="1024m">
+          <load-config filename="myconf.xml"/>  
+          <source-path path-element="${basedir}/src"/>
+        </mxmlc>
+    </target>
+</project>
